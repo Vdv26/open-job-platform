@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FindMyService - Open Job Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>FindMyService</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/post-job">Post Job</a>
+      <a href="/browse-jobs">Browse Jobs</a>
+    </nav>
+  </header>
+  <main>
+    <section class="search-section">
+      <form class="search-form" action="/search" method="GET">
+        <input type="text" name="query" placeholder="Search for jobs...">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+    </section>
+    
+    <h2 class="text-center mb-2">Available Jobs</h2>
+    
+    <% jobs.forEach(job => { %>
+      <div class="job-card">
+        <h2><%= job.title %></h2>
+        <div class="location"><%= job.location %></div>
+        <p><%= job.description.substring(0, 150) %>...</p>
+        <div class="price">₹<%= job.payment %></div>
+        <div class="date">Posted on: <%= job.createdAt ? job.createdAt.toLocaleDateString() : new Date().toLocaleDateString() %></div>
+        <a href="/job/<%= job._id %>" class="btn btn-primary">View Details</a>
+      </div>
+    <% }) %>
+  </main>
+</body>
+</html>

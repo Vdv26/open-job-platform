@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Jobs</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Browse Jobs</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/post-job">Post Job</a>
+      <a href="/browse-jobs">Browse Jobs</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Available Jobs</h2>
+    <% if (jobs.length > 0) { %>
+      <% jobs.forEach(job => { %>
+        <div class="job-card">
+          <h3><%= job.title %></h3>
+          <p><%= job.description %></p>
+          <p><strong>Payment:</strong> <span class="rupee-symbol">₹</span><%= job.payment %></p>
+          <p><strong>Location:</strong> <%= job.location %></p>
+          <a href="/job/<%= job._id %>">View Details</a>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p>No jobs available at the moment.</p>
+    <% } %>
+  </main>
+  <footer>
+    <p>&copy; 2025 Open Job Platform. All rights reserved.</p>
+  </footer>
+</body>
+</html>

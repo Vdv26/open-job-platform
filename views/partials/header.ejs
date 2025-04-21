@@ -1,0 +1,15 @@
+<header>
+  <h1>Open Job Platform</h1>
+  <nav>
+    <a href="/" class="<%= currentUrl === '/' ? 'active' : '' %>">Home</a>
+    <% if (user) { %>
+      <a href="/post-job" class="<%= currentUrl === '/post-job' ? 'active' : '' %>">Post Job</a>
+    <% } %>
+    <a href="/browse-jobs" class="<%= currentUrl === '/browse-jobs' ? 'active' : '' %>">Browse Jobs</a>
+    <% if (user) { %>
+      <a href="/auth/logout">Logout</a>
+    <% } else { %>
+      <a href="/auth/login">Login</a>
+    <% } %>
+  </nav>
+</header>
